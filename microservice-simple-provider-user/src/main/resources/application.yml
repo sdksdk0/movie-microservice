@@ -1,6 +1,8 @@
 server:
-  port: 8000
+  port: 8001
 spring:
+  application:
+    name: microservice-provider-user
   jpa:
     generate-ddl: false
     show-sql: true
@@ -31,5 +33,15 @@ info:
 management:
   security:
     enabled: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:p123456@localhost:8761/eureka/
+  instance:
+      prefer-ip-address: true
+
+
+
 
 

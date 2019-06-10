@@ -1,6 +1,16 @@
 server:
-    port: 8081
+    port: 8082
 
 management:
     security:
         enabled: false
+spring:
+    application:
+        name: microservice-consumer-movie
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://user:p123456@localhost:8761/eureka/
+    instance:
+        prefer-ip-address: true
