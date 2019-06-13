@@ -16,3 +16,5 @@ eureka:
         prefer-ip-address: true
 ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+
