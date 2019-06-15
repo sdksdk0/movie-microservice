@@ -2,6 +2,8 @@ package cn.tf.cloud.microservicesimpleconsumermovie.controller;
 
 import cn.tf.cloud.microservicesimpleconsumermovie.entity.User;
 import cn.tf.cloud.microservicesimpleconsumermovie.feign.UserFeignClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
 import feign.Client;
 import feign.Contract;
 import feign.Feign;
@@ -36,7 +38,8 @@ public class MovieController {
     return this.userFeignClient.findById(id);
   }
 
-  /*private UserFeignClient userUserFeignClient;
+/*
+  private UserFeignClient userUserFeignClient;
 
   private UserFeignClient adminUserFeignClient;
 
@@ -61,7 +64,8 @@ public class MovieController {
   }
 */
 
-  @GetMapping("/user/{id}")
+
+ @GetMapping("/user/{id}")
   public User findById(@PathVariable Long id) {
     return this.restTemplate.getForObject("http://microservice-provider-user/user/" + id, User.class);
   }
@@ -73,6 +77,18 @@ public class MovieController {
     MovieController.LOGGER.info("{}:{}:{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
   }
 
+  @HystrixCommand(fallbackMethod = "findByIdFallback")
+  @GetMapping("/user_fallback/{id}")
+  public User findByIdUser(@PathVariable Long id) {
+    return this.restTemplate.getForObject("http://microservice-provider-user/user/" + id, User.class);
+  }
+  public User findByIdFallback(Long id,Throwable throwable) {
+     LOGGER.error("进入回退方法异常:"+throwable);
+     User user = new User();
+     user.setId(-1L);
+     user.setName("默认用户");
+     return user;
+ }
 
 
 }

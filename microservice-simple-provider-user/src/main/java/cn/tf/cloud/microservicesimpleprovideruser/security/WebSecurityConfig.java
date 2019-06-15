@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+/*import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,16 +14,16 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;*/
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-@Configuration
+//@Configuration
 //@EnableWebSecurity
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+public class WebSecurityConfig/* extends WebSecurityConfigurerAdapter */{
+/*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 所有的请求，都需要经过HTTP basic认证
@@ -47,11 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Component
     class CustomUserDetailsService implements UserDetailsService {
-        /**
+        *//**
          * 模拟两个账户：
          * ① 账号是user，密码是password1，角色是user-role
          * ② 账号是admin，密码是password2，角色是admin-role
-         */
+         *//*
         @Override
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
             if ("user".equals(username)) {
@@ -143,5 +143,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         public void setRole(String role) {
             this.role = role;
         }
-    }
+    }*/
 }

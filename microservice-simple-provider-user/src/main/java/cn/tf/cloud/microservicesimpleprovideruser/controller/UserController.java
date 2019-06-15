@@ -5,9 +5,9 @@ import cn.tf.cloud.microservicesimpleprovideruser.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
+/*import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetails;*/
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ public class UserController {
   private UserRepository userRepository;
   private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-  @GetMapping("/user/{id}")
+  /*@GetMapping("/user/{id}")
   public User findById(@PathVariable Long id) {
     Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     if (principal instanceof UserDetails) {
@@ -36,12 +36,12 @@ public class UserController {
     }
     User findOne = this.userRepository.findById(id).get();
     return findOne;
-  }
+  }*/
 
 
-/*  @GetMapping("/user/{id}")
+  @GetMapping("/user/{id}")
   public User findById(@PathVariable Long id) {
     User findOne = this.userRepository.findById(id).get();
     return findOne;
-  }*/
+  }
 }

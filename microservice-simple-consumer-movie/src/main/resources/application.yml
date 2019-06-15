@@ -4,6 +4,10 @@ server:
 management:
     security:
         enabled: false
+    endpoints:
+        web:
+            exposure:
+                include: '*'
 spring:
     application:
         name: microservice-consumer-movie
@@ -16,5 +20,10 @@ eureka:
         prefer-ip-address: true
 ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+feign:
+  hystrix:
+    enabled: true
+
+
 
 
