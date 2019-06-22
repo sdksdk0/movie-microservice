@@ -1,0 +1,34 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: microservice-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://59.37.136.102:8091/zhupei/spring-cloud-config-repo.git      # 配置Git仓库的地址
+          username:                                                        # Git仓库的账号
+          password:                                                         # Git仓库的密码
+  security:
+    user:
+      name: user
+      password: 123456
+  bus:
+    trace:
+      enabled: true     # 开启cloud bus的跟踪
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,bus-refresh
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:p123456@localhost:8761/eureka/
