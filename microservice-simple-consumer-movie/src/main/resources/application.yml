@@ -11,6 +11,21 @@ management:
 spring:
     application:
         name: microservice-consumer-movie
+    main:
+        allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+#   zipkin:
+#    base-url: http://zipkin-server/
+    sleuth:
+        sampler:
+          percentage: 1.0
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+    zipkin:
+      rabbitmq:
+        queue: zipkin
 
 eureka:
     client:
@@ -23,6 +38,11 @@ ribbon:
 feign:
   hystrix:
     enabled: true
+
+logging:                                # 配置日志级别，让hibernate打印出执行的SQL
+  level:
+    root: INFO
+    org.springframeword.web.servlet.DispatcherServlet: DEBUG
 
 
 

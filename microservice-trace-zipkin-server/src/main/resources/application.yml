@@ -1,0 +1,31 @@
+server:
+  port: 9411
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+
+spring:
+  application:
+    name: zipkin-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:p123456@localhost:8761/eureka/
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: localhost:5672
+      password: guest
+      username: guest
+      queue: zipkin
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      cluster: elasticsearch
+      hosts: http://localhost:9200
+      index: zipkin
+      index-shards: 5
+      index-replicas: 1
